@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GDG RMKEC Campus Platform - Full End-to-End Documentation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+@page {
+  size: A4;
+  margin: 18mm 16mm;
+  @bottom-right {
+    content: counter(page);
+  }
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #0F172A;
+  background: #FFFFFF;
+  line-height: 1.6;
+  font-size: 13.5px;
+  margin: 0;
+  padding: 0;
+}
+
+.cover-header {
+  border-bottom: 3px solid #2563EB;
+  padding-bottom: 25px;
+  margin-bottom: 35px;
+}
+
+.cover-tag {
+  display: inline-block;
+  background: #EFF6FF;
+  color: #2563EB;
+  border: 1px solid #BFDBFE;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0B132B;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1E3A8A;
+  border-bottom: 1.5px solid #E2E8F0;
+  padding-bottom: 6px;
+  margin-top: 30px;
+  margin-bottom: 14px;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #334155;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  page-break-after: avoid;
+}
+
+p {
+  margin: 0 0 12px 0;
+  color: #334155;
+}
+
+ul, ol {
+  margin: 0 0 14px 0;
+  padding-left: 22px;
+}
+
+li {
+  margin-bottom: 5px;
+  color: #334155;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: 11.5px;
+  background: #F1F5F9;
+  color: #1E293B;
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid #E2E8F0;
+}
+
+pre {
+  background: #0B132B;
+  color: #E2E8F0;
+  padding: 14px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 12px 0 16px 0;
+  page-break-inside: avoid;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+}
+
+.table-container {
+  width: 100%;
+  margin: 14px 0 20px 0;
+  page-break-inside: avoid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  background: #FFFFFF;
+}
+
+th {
+  background: #F8FAFC;
+  color: #1E293B;
+  font-weight: 700;
+  text-align: left;
+  padding: 8px 10px;
+  border-top: 1px solid #CBD5E1;
+  border-bottom: 2px solid #94A3B8;
+}
+
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #E2E8F0;
+  color: #334155;
+}
+
+tr:nth-child(even) td {
+  background: #F8FAFC;
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 14px 0;
+  font-size: 12.5px;
+  page-break-inside: avoid;
+}
+
+.alert-important {
+  background: #FEF2F2;
+  border-left: 4px solid #EF4444;
+  color: #991B1B;
+}
+
+blockquote {
+  margin: 12px 0;
+  padding: 10px 16px;
+  background: #F8FAFC;
+  border-left: 4px solid #2563EB;
+  color: #475569;
+  font-style: italic;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #E2E8F0;
+  margin: 24px 0;
+}
+
+a {
+  color: #2563EB;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+  <div class="cover-header">
+    <span class="cover-tag">GDG RMKEC Campus Platform &bull; Authoritative Specification</span>
+    <h1>Full End-to-End Technical Documentation</h1>
+    <p style="font-size: 13px; color: #64748B; margin-bottom: 0;">
+      Unified Architecture Manual &bull; Revision 3.0 &bull; Generated for Technical Review & Distribution
+    </p>
+  </div>
+  <h1>GDG RMKEC Campus Platform: End-to-End Technical Documentation</h1>
+<p><strong>Authoritative Full-Stack Architecture, System Specification & Operational Manual</strong></p>
+<p><em>Document Revision: 3.0 (Unified Frontend & Backend Hardening)</em></p>
+<p><em>Target Environment: Docker-First Containerized Cloud-Native Infrastructure & Modern Multi-Browser Web Client</em></p>
+<hr />
+<h2>1. Executive Summary & Platform Identity</h2>
+<p>The <strong>GDG RMKEC Campus Platform</strong> is an enterprise-grade, cloud-native campus operations system designed for Google Developer Groups (GDG) at RMK Engineering College. The platform manages the full operational lifecycle of student developer chapters:</p>
+<ul>
+<li><strong>Hierarchical Human Resources:</strong> Organization teams, positions, onboarding, promotions, and 360° member lifecycle tracking.</li>
+<li><strong>Projects & Contributions:</strong> Collaborative initiative tracking with 4-dimensional authorship and active membership locks.</li>
+<li><strong>Event Operations & Logistics:</strong> Lifecycle management, attendee imports, cryptographic append-only QR attendance, and automated certificate issuance.</li>
+<li><strong>Security & Authorization:</strong> Multi-tenant 7-Step Role-Based Access Control (RBAC) with spatial scoping, token reuse detection, and global idempotency.</li>
+<li><strong>Responsive User Experience:</strong> Modern React 18 frontend with theme switching, cross-browser normalization (Safari, Edge, Chrome, Firefox), robust error boundary crash containment, and mobile drawers.</li>
+</ul>
+<h3>Unified Full-Stack Architecture Diagram</h3>
+<pre><code class="language-mermaid">
+graph TD
+    subgraph Client Layer ["Client Tier (Browser / Mobile)"]
+        Browser["Modern Web Browsers (Chrome, Safari, Edge, Firefox)"]
+        Mobile["iOS Safari &amp; Android Chrome (Touch-Enabled)"]
+    end
+
+    subgraph Edge Layer ["Edge &amp; Gateway Tier"]
+        Nginx["Nginx 1.30.4 (Reverse Proxy &amp; TLS Termination) :4000"]
+    end
+
+    subgraph Frontend Tier ["Frontend Application (SPA)"]
+        ReactApp["React 18 + Vite SPA"]
+        EB["Universal ErrorBoundary (Crash Isolation)"]
+        Router["Role-Based Dashboard Router"]
+        HrDash["HR Management Dashboard"]
+        EventDash["Event Operations Dashboard"]
+        AuthView["Authentication &amp; Login Modal System"]
+    end
+
+    subgraph Backend Tier ["Backend Service Layer (:8000)"]
+        FastAPI["FastAPI 0.115 Async Application"]
+        AuthService["Auth &amp; Session Service"]
+        RBACService["7-Step Authorization Service"]
+        OrgService["Organization &amp; HR Service"]
+        EventService["Event &amp; Certificate Service"]
+        ProjectService["Project &amp; Contribution Service"]
+        CMSService["CMS &amp; Public Portal Service"]
+        FileService["File &amp; Storage Service"]
+    end
+
+    subgraph Data Tier ["Persistence &amp; Caching Infrastructure"]
+        Postgres[("PostgreSQL 18 (ACID Persistence, 40 Tables, 26 Enums) :5432")]
+        RedisCore[("Redis 8.10 (Session Cache, Authz Cache, Idempotency) :6379")]
+        MinIOStore[("MinIO S3 Compatible Object Storage :9000")]
+    end
+
+    Browser --&gt;|HTTPS / Port 4000| Nginx
+    Mobile --&gt;|HTTPS / Port 4000| Nginx
+    Nginx --&gt;|/ Static Assets| ReactApp
+    Nginx --&gt;|/api/v1/ Reverse Proxy| FastAPI
+    ReactApp --&gt; EB
+    EB --&gt; Router
+    Router --&gt; HrDash
+    Router --&gt; EventDash
+    Router --&gt; AuthView
+
+    FastAPI --&gt; AuthService
+    FastAPI --&gt; RBACService
+    FastAPI --&gt; OrgService
+    FastAPI --&gt; EventService
+    FastAPI --&gt; ProjectService
+    FastAPI --&gt; CMSService
+    FastAPI --&gt; FileService
+
+    AuthService --&gt; Postgres
+    AuthService --&gt; RedisCore
+    RBACService --&gt; RedisCore
+    OrgService --&gt; Postgres
+    EventService --&gt; Postgres
+    EventService --&gt; MinIOStore
+    ProjectService --&gt; Postgres
+    FileService --&gt; MinIOStore
+</code></pre>
+<hr />
+<h2>2. Technology Stack & Component Specifications</h2>
+<div class="table-container"><table><thead><tr>
+<th>Tier</th>
+<th>Component</th>
+<th>Technology / Library</th>
+<th>Version</th>
+<th>Purpose & Responsibilities</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>Runtime / Framework</td>
+<td>React</td>
+<td>18.3.1</td>
+<td>Component-driven reactive user interface</td>
+</tr>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>Tooling & Bundler</td>
+<td>Vite</td>
+<td>5.4.21</td>
+<td>Lightning-fast HMR and production tree-shaking</td>
+</tr>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>Iconography</td>
+<td>Lucide-React</td>
+<td>0.427.0</td>
+<td>Crisp, accessible SVG interface icons</td>
+</tr>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>Styling System</td>
+<td>Custom CSS Variables</td>
+<td>Post-Phase 10</td>
+<td>Master design system, responsive grids, and Dark/Light mode tokens</td>
+</tr>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>Crash Protection</td>
+<td>Class ErrorBoundary</td>
+<td>Custom</td>
+<td>Catch rendering errors, display diagnostics, and allow seamless retry</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>Runtime Environment</td>
+<td>Python</td>
+<td>3.12-slim-trixie</td>
+<td>Async-first, high-throughput non-blocking runtime</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>Web Framework</td>
+<td>FastAPI</td>
+<td>$\ge$ 0.115.0</td>
+<td>High-performance asynchronous REST API with auto OpenAPI 3.1 specs</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>Database Engine</td>
+<td>PostgreSQL</td>
+<td>18</td>
+<td>ACID relational database with custom enums, partial indexes & advisory locks</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>Async DB Driver</td>
+<td>asyncpg</td>
+<td>$\ge$ 0.30.0</td>
+<td>High-performance binary protocol driver</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>ORM & Migrations</td>
+<td>SQLAlchemy + Alembic</td>
+<td>2.0.36 / 1.14.0</td>
+<td>Declarative mappings, async sessions, and reversible migration ledger</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>In-Memory Cache</td>
+<td>Redis</td>
+<td>7.4 / 8.10.0</td>
+<td>Session tokens, authorization cache (<code>authz:*</code>), and idempotency store</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>Object Storage</td>
+<td>MinIO / AWS S3</td>
+<td>S3 Compatible</td>
+<td>Multi-tenant storage for certificates, event media, and assets</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>ASGI Server</td>
+<td>Uvicorn</td>
+<td>$\ge$ 0.34.0</td>
+<td>ASGI web server with worker clustering</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>Structured Logging</td>
+<td>structlog</td>
+<td>$\ge$ 24.4.0</td>
+<td>Contextual JSON logs with distributed tracing metadata</td>
+</tr>
+<tr>
+<td><strong>Gateway</strong></td>
+<td>Web Server / Proxy</td>
+<td>Nginx</td>
+<td>1.30.4</td>
+<td>Reverse proxy, static asset delivery, rate limiting, and gzip compression</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2>3. End-to-End Architectural Principles & Invariants</h2>
+<h3>3.1 Layer Dependency Hierarchy (SOLID Dependency Inversion)</h3>
+<p>The entire platform conforms strictly to clean layered architecture:</p>
+<pre><code class="language-">
+[ Frontend View / UI Components ]
+               │
+               ▼
+   [ Frontend Service Layer ]
+  (authService, dbService, eventsDbService)
+               │  HTTP REST /api/v1/
+               ▼
+      [ FastAPI Route Layer ]
+      (Thin Controllers, Parameter Extraction, Depends())
+               │
+               ▼
+    [ Application Domain Services ]
+    (Business Rules, Invariants, Transactions, Auditing)
+         │                   │                   │
+         ▼                   ▼                   ▼
+[ Repositories ]      [ Redis Core ]     [ MinIO S3 Storage ]
+(BaseRepository)    (Authz/Session/Lock)   (Presigned Media)
+         │
+         ▼
+[ PostgreSQL 18 ]
+</code></pre>
+<h3>3.2 Non-Negotiable Invariants</h3>
+<p>1. <strong>Thin Controller Rule:</strong> API route handlers never contain raw business logic or direct database queries. Their sole responsibility is parameter validation, dependency injection via <code>Depends()</code>, invoking domain services, and returning Pydantic schemas.</p>
+<p>2. <strong>Repository Isolation:</strong> Domain services never execute raw SQL or handle raw <code>AsyncSession</code> directly. All persistence is encapsulated behind repositories subclassing <code>BaseRepository</code>.</p>
+<p>3. <strong>Transaction Ownership:</strong> Domain services define transactional boundaries (<code>await db.commit()</code> / <code>await db.rollback()</code>). Mutations write audit log records atomically before committing.</p>
+<p>4. <strong>Zero Token Leakage:</strong> Refresh tokens are never returned in JSON response bodies. They are stored and rotated exclusively via <code>HttpOnly; Secure; SameSite=Strict</code> cookies.</p>
+<p>5. <strong>No Physical Deletions:</strong> Business records are never subjected to physical <code>DELETE</code> queries. Soft-deletion sets <code>deleted_at = now()</code> and <code>deleted_by = actor_id</code>. Repositories automatically enforce <code>WHERE deleted_at IS NULL</code>.</p>
+<p>6. <strong>Graceful UI Containment:</strong> Runtime JavaScript errors must never cause a blank white screen. The <code>ErrorBoundary</code> isolates crashes to specific components or provides a branded retry fallback.</p>
+<hr />
+<h2>4. Authentication, Session Lifecycle & Transport Security</h2>
+<h3>4.1 Dual-Token Architecture</h3>
+<p>The platform separates access delegation from session persistence using dual cryptographic JWTs:</p>
+<ul>
+<li><strong>Access Token:</strong> Short-lived (15 minutes). Carries <code>sub</code> (user_id), <code>session_id</code>, <code>email</code>, <code>jti</code>, and <code>type: "access"</code>. Managed strictly in-memory by the frontend client; never persisted in <code>localStorage</code> or <code>sessionStorage</code> to eliminate XSS token theft.</li>
+<li><strong>Refresh Token:</strong> Long-lived (7 days normal, 30 days remember-me). Carries <code>type: "refresh"</code>. Dispatched exclusively via browser cookies:</li>
+</ul>
+<pre><code class="language-http">
+  Set-Cookie: refresh_token=&lt;JWT&gt;; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=604800
+</code></pre>
+<h3>4.2 Strict Single-Flight Token Rotation & Reuse Detection</h3>
+<p>To prevent replay and token theft attacks, every refresh request rotates the token under a row-level database lock:</p>
+<pre><code class="language-mermaid">
+sequenceDiagram
+    autonumber
+    actor Client as Frontend Client
+    participant API as FastAPI Backend
+    participant PG as PostgreSQL 18
+    participant Redis as Redis Cache
+
+    Client-&gt;&gt;API: POST /api/v1/auth/refresh (Cookie: refresh_token)
+    API-&gt;&gt;PG: SELECT * FROM user_sessions WHERE id = :sid FOR UPDATE
+    Note over PG: PostgreSQL row-level lock prevents concurrent race conditions
+    API-&gt;&gt;API: Compute SHA-256(refresh_token) and compare with session.refresh_token_hash
+
+    alt Token Hash Matches (Valid Single-Flight Rotation)
+        API-&gt;&gt;API: Generate new Access Token + new Refresh Token
+        API-&gt;&gt;PG: UPDATE user_sessions SET refresh_token_hash = SHA256(new_token)
+        API-&gt;&gt;Redis: SET session:sid (Updated TTL)
+        API--&gt;&gt;Client: 200 OK (JSON: access_token, user_profile) + Set-Cookie: new_refresh_token
+    else Token Hash Mismatch (Replay or Re-use Detected!)
+        API-&gt;&gt;PG: UPDATE user_sessions SET is_revoked = TRUE
+        API-&gt;&gt;Redis: DEL session:sid
+        API--&gt;&gt;Client: 401 Unauthorized (Error: TOKEN_REUSE_DETECTED)
+        Note over Client: Immediate forced logout and state clearance
+    end
+</code></pre>
+<h3>4.3 Account Lifecycle Synchronization</h3>
+<p>Account status changes instantly propagate across active sessions:</p>
+<ul>
+<li><strong>Password Reset:</strong> Generates a cryptographically secure OTP, verifies entropy, updates the password hash, and terminates all active sessions in PostgreSQL and Redis.</li>
+<li><strong>Account Disablement:</strong> Transitioning a member to <code>SUSPENDED</code> or <code>TERMINATED</code> immediately invalidates their Redis session keys and revokes active sessions in PostgreSQL.</li>
+</ul>
+<hr />
+<h2>5. Canonical Authorization & 7-Step RBAC Engine</h2>
+<p>Every API request mutating a resource or reading privileged data passes through <code>AuthorizationService.evaluate_authorization()</code>:</p>
+<pre><code class="language-mermaid">
+flowchart TD
+    Req["Inbound Request"] --&gt; Step1{"1. Valid JWT &amp; Session Active?"}
+    Step1 -- No --&gt; E401["401 Unauthorized"]
+    Step1 -- Yes --&gt; Step2{"2. Account Status == ACTIVE?"}
+    Step2 -- No --&gt; E403A["403 Forbidden: Account Disabled"]
+    Step2 -- Yes --&gt; Step3{"3. Explicit Resource Revocation?"}
+    Step3 -- Yes --&gt; E403B["403 Forbidden: Explicitly Revoked"]
+    Step3 -- No --&gt; Step4{"4. Position Has Capability?"}
+    Step4 -- No --&gt; E403C["403 Forbidden: Missing Capability"]
+    Step4 -- Yes --&gt; Step5{"5. Spatial Scope Evaluation"}
+    
+    Step5 -- GLOBAL --&gt; Grant["Access Granted (200 OK)"]
+    Step5 -- ORGANIZATION --&gt; CheckOrg{"Target within Organization?"}
+    CheckOrg -- Yes --&gt; Grant
+    CheckOrg -- No --&gt; E403D["403 Forbidden: Cross-Org Boundary"]
+    
+    Step5 -- OWN_TEAM --&gt; CheckTeam{"Target in User's Squad?"}
+    CheckTeam -- Yes --&gt; Grant
+    CheckTeam -- No --&gt; E403E["403 Forbidden: Cross-Team Boundary"]
+    
+    Step5 -- RESOURCE --&gt; CheckGrant{"Explicit Resource Grant Active?"}
+    CheckGrant -- Yes --&gt; Grant
+    CheckGrant -- No --&gt; Step6{"6. Business Hierarchy Rule?"}
+    Step6 -- Yes --&gt; Grant
+    Step6 -- No --&gt; E403F["403 Forbidden: Default Deny"]
+</code></pre>
+<h3>5.1 Canonical Position & Scope Matrix</h3>
+<div class="table-container"><table><thead><tr>
+<th>Canonical Position</th>
+<th>Default Spatial Scope</th>
+<th>Domain Authorities</th>
+</tr></thead><tbody>
+<tr>
+<td><code>GDG_LEAD</code></td>
+<td><code>GLOBAL</code></td>
+<td>Unrestricted authority across all campus domains, configuration, projects, and finance.</td>
+</tr>
+<tr>
+<td><code>HR_LEAD</code></td>
+<td><code>ORGANIZATION</code></td>
+<td>Full organization-wide member management, invitations, onboarding, promotions, and 360° views.</td>
+</tr>
+<tr>
+<td><code>TEAM_LEAD</code></td>
+<td><code>OWN_TEAM</code></td>
+<td>Team-scoped member management, project coordination, task assignments, and event attendance ops.</td>
+</tr>
+<tr>
+<td><code>TEAM_MEMBER</code></td>
+<td><code>OWN_TEAM</code> / <code>LIMITED</code></td>
+<td>Personal profile management, contribution logging, task execution, and event RSVPs.</td>
+</tr>
+</tbody></table></div>
+<h3>5.2 Anti-Escalation & Resource Grants</h3>
+<p>Resource access grants (<code>resource_access_grants</code>) permit temporary delegation (e.g., delegating event coordination to an active member) with strict anti-escalation rules:</p>
+<ul>
+<li><strong>No Self-Escalation:</strong> Users cannot grant permissions to their own account.</li>
+<li><strong>Capability Bounding:</strong> Granters cannot delegate capabilities they do not personally hold.</li>
+<li><strong>Scope Restriction:</strong> Granters with <code>OWN_TEAM</code> scope cannot grant <code>ORGANIZATION</code> or <code>GLOBAL</code> scope.</li>
+<li><strong>Revocation Overrides:</strong> An explicit grant marked <code>REVOKED</code> overrides position-level permissions.</li>
+</ul>
+<hr />
+<h2>6. Database Architecture & Canonical Schema Ledger</h2>
+<p>The database layer consists of <strong>40 canonical tables</strong> and <strong>26 custom PostgreSQL enum types</strong> managed by Alembic:</p>
+<pre><code class="language-mermaid">
+erDiagram
+    ORGANIZATION_GROUPS ||--o{ ORGANIZATION_TEAMS : contains
+    ORGANIZATION_TEAMS ||--o{ USER_TEAM_ASSIGNMENTS : assigns
+    POSITIONS ||--o{ USER_TEAM_ASSIGNMENTS : defines_rank
+    POSITIONS ||--o{ POSITION_PERMISSIONS : maps
+    PERMISSIONS ||--o{ POSITION_PERMISSIONS : specifies
+    USERS ||--o{ USER_TEAM_ASSIGNMENTS : holds
+    USERS ||--o{ USER_SESSIONS : authenticates
+    USERS ||--o{ RESOURCE_ACCESS_GRANTS : receives
+    USERS ||--o{ PROJECT_MEMBERS : contributes
+    PROJECTS ||--o{ PROJECT_MEMBERS : groups
+    PROJECTS ||--o{ MEMBER_CONTRIBUTIONS : logs
+    EVENTS ||--o{ EVENT_PARTICIPANTS : attends
+    EVENTS ||--o{ ATTENDANCE_LOGS : records
+    EVENTS ||--o{ GENERATED_CERTIFICATES : issues
+</code></pre>
+<h3>6.1 Complete Alembic Migration Ledger</h3>
+<div class="table-container"><table><thead><tr>
+<th>Version</th>
+<th>Migration Identifier</th>
+<th>Core Changes & Invariants Enforced</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>001</strong></td>
+<td><code>001_create_users_sessions_activity_logs</code></td>
+<td>Created core <code>users</code>, <code>user_sessions</code>, and append-only <code>activity_logs</code>.</td>
+</tr>
+<tr>
+<td><strong>002</strong></td>
+<td><code>002_hierarchical_rbac</code></td>
+<td>Initial schema for permissions and role definitions.</td>
+</tr>
+<tr>
+<td><strong>003</strong></td>
+<td><code>003_user_sessions_remember_me</code></td>
+<td>Added <code>remember_me</code> boolean to <code>user_sessions</code> for extended 30-day TTLs.</td>
+</tr>
+<tr>
+<td><strong>004</strong></td>
+<td><code>004_hr_org_tables</code></td>
+<td>Established canonical organization groups, teams, positions, and assignment history.</td>
+</tr>
+<tr>
+<td><strong>005</strong></td>
+<td><code>005_session_refresh_token_tracking</code></td>
+<td>Introduced <code>refresh_token_hash</code> in <code>user_sessions</code> for single-flight token rotation.</td>
+</tr>
+<tr>
+<td><strong>006</strong></td>
+<td><code>006_consolidate_unified_v2_schema</code></td>
+<td>Comprehensive consolidation across all campus operational domains.</td>
+</tr>
+<tr>
+<td><strong>007</strong></td>
+<td><code>007_relax_transfer_history_team_id</code></td>
+<td>Nullable foreign key on team transfer history to support initial user onboarding.</td>
+</tr>
+<tr>
+<td><strong>008</strong></td>
+<td><code>008_position_permissions_scope</code></td>
+<td>Mapped canonical positions (<code>GDG_LEAD</code>, <code>HR_LEAD</code>, <code>TEAM_LEAD</code>, <code>TEAM_MEMBER</code>) to spatial scopes.</td>
+</tr>
+<tr>
+<td><strong>009</strong></td>
+<td><code>009_member_lifecycle_states</code></td>
+<td>Established 5 account lifecycle states (<code>INVITED</code>, <code>ACTIVE</code>, <code>SUSPENDED</code>, <code>TERMINATED</code>, <code>ALUMNI</code>).</td>
+</tr>
+<tr>
+<td><strong>010</strong></td>
+<td><code>010_project_membership_and_team</code></td>
+<td>Created <code>projects</code> and <code>project_members</code> with partial unique index <code>uq_project_member_active</code>.</td>
+</tr>
+<tr>
+<td><strong>011</strong></td>
+<td><code>011_communications_tasks_notifications</code></td>
+<td>Created <code>communications</code>, <code>tasks</code>, and polymorphic <code>notifications</code>.</td>
+</tr>
+<tr>
+<td><strong>012</strong></td>
+<td><code>012_events_attendance_certificates</code></td>
+<td>Created event management, CSPRNG QR scan logs, and certificate issuance tables.</td>
+</tr>
+<tr>
+<td><strong>013</strong></td>
+<td><code>013_cms_files_cleanup</code></td>
+<td>Created newsletters, announcements, <code>website_settings</code>, and uploaded file tracking.</td>
+</tr>
+<tr>
+<td><strong>014</strong></td>
+<td><code>014_canonical_data_migration</code></td>
+<td>Executed preflight audit (<code>rows_checked = 9356</code>, <code>rows_failed = 0</code>), advisory lock triggers.</td>
+</tr>
+<tr>
+<td><strong>015</strong></td>
+<td><code>015_decommission_legacy_tables</code></td>
+<td>Dropped legacy <code>teams</code>, <code>roles</code>, and <code>role_permissions</code> after verifying 0 unmapped users.</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2>7. Frontend Application Architecture</h2>
+<p>The frontend is an optimized Single Page Application (SPA) structured for clarity, responsiveness, and resilience.</p>
+<h3>7.1 Source Code Directory Topology</h3>
+<pre><code class="language-">
+src/
+├── App.jsx                     # Top-level state, dashboard router, toast notifications
+├── main.jsx                    # Application root, ErrorBoundary, global error listeners
+├── index.css                   # Master design system, responsive breakpoints, CSS tokens
+├── components/
+│   ├── ErrorBoundary.jsx       # Universal error boundary with diagnostic drawer &amp; recovery
+│   ├── LoginForm.jsx           # Branded login card with Google SSO and College Email ID
+│   ├── HrDashboard.jsx         # HR Management Dashboard (Stats, Teams, Donut Chart, Projects)
+│   ├── EventDashboard.jsx      # Event Management Dashboard (Action Cards, Attendance, Certs)
+│   ├── Sidebar.jsx             # Off-canvas mobile drawer &amp; desktop branding sidebar
+│   ├── TopHeader.jsx           # Global header with search, theme toggle, and profile badge
+│   ├── TeamGroupedList.jsx     # Member columns grouped by HR, Tech, and Event Management
+│   ├── TeamDonutChart.jsx      # SVG dynamic ratio donut chart for team member distribution
+│   ├── CertificatesTable.jsx   # Recently issued certificates with modal view links
+│   ├── UpcomingEventsList.jsx  # Event calendar cards with date badges and attendee counts
+│   ├── RecentAttendanceList.jsx# Attendance percentage rings with live scan summaries
+│   ├── AddPeopleModal.jsx      # Multi-field member registration modal with auto-scrolling
+│   ├── MemberProfileModal.jsx  # Member 360 profile drawer with promotion &amp; transfer controls
+│   ├── SwitchTeamModal.jsx     # Inter-squad transfer modal with transactional history
+│   ├── CreateEventModal.jsx    # Event scheduler modal with date and venue pickers
+│   ├── MarkAttendanceModal.jsx # Live attendee check-in and QR verification modal
+│   └── ViewCertificateModal.jsx# Digital certificate preview modal
+└── services/
+    ├── authService.js          # Authentication service (JWT exchange, session caching)
+    ├── dbService.js            # Persistent member repository with localStorage offline cache
+    └── eventsDbService.js      # Persistent event, attendee, and certificate repository
+</code></pre>
+<h3>7.2 Universal Error Boundary (<code>ErrorBoundary.jsx</code>)</h3>
+<p>The frontend implements a production-grade React class Error Boundary that catches runtime rendering exceptions:</p>
+<ul>
+<li><strong>Global Error Listeners (<code>main.jsx</code>):</strong> Registers <code>window.addEventListener('unhandledrejection')</code> and <code>window.addEventListener('error')</code> to capture asynchronous exceptions.</li>
+<li><strong>Crash Containment (<code>App.jsx</code>):</strong> Wraps both the root application and individual dashboard routers. A bug in an event chart never crashes the navigation shell or toasts.</li>
+<li><strong>Interactive Recovery:</strong> Users can trigger <strong>"Try Again"</strong> (resets error state), <strong>"Reload Page"</strong>, or <strong>"Clear Cache & Reset"</strong> (clears <code>localStorage</code>/<code>sessionStorage</code> and restarts).</li>
+<li><strong>Diagnostics Drawer:</strong> Collapsible technical drawer displaying the exact error message and component stack with a one-click <strong>"Copy stack"</strong> button.</li>
+</ul>
+<h3>7.3 Multi-Browser Normalization & Compatibility Matrix</h3>
+<div class="table-container"><table><thead><tr>
+<th>Browser Family</th>
+<th>Target Version</th>
+<th>Engine</th>
+<th>Normalizations Applied</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Apple Safari (macOS & iOS)</strong></td>
+<td>Safari 14+ / iOS 14+</td>
+<td>WebKit</td>
+<td><code>-webkit-backdrop-filter: blur(8px)</code>, <code>-webkit-appearance: none</code>, <code>100dvh</code> viewport height fallback, <code>-webkit-overflow-scrolling: touch</code>, <code>format-detection="telephone=no"</code>.</td>
+</tr>
+<tr>
+<td><strong>Google Chrome</strong></td>
+<td>Chrome 87+</td>
+<td>Blink / V8</td>
+<td>Optimized <code>-webkit-autofill</code> background reset, <code>::-webkit-scrollbar</code> styling, standard ES2020 transpilation.</td>
+</tr>
+<tr>
+<td><strong>Microsoft Edge</strong></td>
+<td>Edge 88+</td>
+<td>Chromium</td>
+<td><code><meta http-equiv="X-UA-Compatible" content="IE=edge" /></code>, standard Chromium flexbox/grid layout.</td>
+</tr>
+<tr>
+<td><strong>Mozilla Firefox</strong></td>
+<td>Firefox 78+</td>
+<td>Gecko / SpiderMonkey</td>
+<td><code>scrollbar-width: thin</code>, <code>scrollbar-color</code>, <code>-moz-osx-font-smoothing: grayscale</code>.</td>
+</tr>
+</tbody></table></div>
+<h3>7.4 Multi-Breakpoint Responsive Design System</h3>
+<p>The application layout adapts fluidly across device form factors:</p>
+<ul>
+<li><strong>Desktop Screens ($> 1200\text{px}$):</strong> 4-column summary metric cards, 3-column team distribution grid, side-by-side bottom analytical widgets.</li>
+<li><strong>Laptops & Tablets Landscape ($900\text{px} - 1200\text{px}$):</strong> 2-column metric cards, single-column stacked team sections.</li>
+<li><strong>Tablets Portrait ($\le 900\text{px}$):</strong> Desktop sidebar transitions into a slide-out off-canvas drawer (<code>.dark-sidebar.mobile-open</code>) with a darkened tap-to-close backdrop (<code>.sidebar-mobile-backdrop</code>).</li>
+<li><strong>Mobile Phones ($\le 768\text{px}$):</strong> Single-column stat cards, compact header with auto-shrinking search bar ($150\text{px}$), hidden background decorative badges, fluid full-width modal forms with <code>max-height: 90dvh</code> auto-scrolling.</li>
+<li><strong>Compact Handsets ($\le 480\text{px}$):</strong> User profile header converts to avatar-only icon, modal padding adjusts to bottom-sheet style, preventing form input clipping.</li>
+</ul>
+<hr />
+<h2>8. Core Domain Subsystems & Business Rules</h2>
+<h3>8.1 HR Lifecycle & Member 360° Projection</h3>
+<ul>
+<li><strong>State Machine:</strong></li>
+</ul>
+<p>$$\text{INVITED} \longrightarrow \text{ACTIVE} \longleftrightarrow \text{SUSPENDED} \longrightarrow \text{TERMINATED} \longrightarrow \text{ALUMNI}$$</p>
+<ul>
+<li>Direct transitions $\text{TERMINATED} \to \text{ACTIVE}$ and $\text{ALUMNI} \to \text{ACTIVE}$ are strictly rejected with <code>HTTP 409 Conflict</code>.</li>
+<li><strong>Concurrency Invariant:</strong> Core team lead assignments utilize PostgreSQL transaction advisory locks (<code>pg_advisory_xact_lock</code>), guaranteeing that race conditions during simultaneous promotions cannot produce duplicate active leads for a squad.</li>
+<li><strong>Privacy Tiers:</strong></li>
+<li><em>Tier A (Self):</em> Full profile, personal contributions, active tasks.</li>
+<li><em>Tier B (Team Lead):</em> Restricted exclusively to members of the lead's squad.</li>
+<li><em>Tier C (HR Lead):</em> Organization-wide visibility into lifecycle transitions and transfer histories.</li>
+<li><em>Tier D (GDG Lead):</em> Global unrestricted view.</li>
+<li><em>Universal Redaction:</em> Password hashes, refresh token digests, and session identifiers are permanently omitted from all API responses.</li>
+</ul>
+<h3>8.2 Projects, Collaborations & Contribution Tracking</h3>
+<ul>
+<li><strong>Project Lifecycle:</strong></li>
+</ul>
+<p>$$\text{PROPOSED} \longrightarrow \text{IN\_PROGRESS} \longrightarrow \text{COMPLETED} \longrightarrow \text{ARCHIVED}$$</p>
+<ul>
+<li>$\text{ARCHIVED}$ is a terminal state; modifications return <code>HTTP 400 Bad Request</code>.</li>
+<li><strong>Collaborator Integrity:</strong> Enforced via partial unique index:</li>
+</ul>
+<pre><code class="language-sql">
+  CREATE UNIQUE INDEX uq_project_member_active ON project_members(project_id, user_id) WHERE (is_active = true);
+</code></pre>
+<ul>
+<li><strong>4-Dimensional Authorship:</strong> Every contribution logs <code>user_id</code> (contributor), <code>created_by</code> (immutable author), <code>updated_by</code> (modifier), and <code>deleted_by</code> (soft-delete actor).</li>
+<li><strong>Zero-$N+1$ Aggregations:</strong> Project 360° views use single-query SQL aggregation for total contributions, hours logged, and category distributions.</li>
+</ul>
+<h3>8.3 Events, Append-Only Attendance & Certificates</h3>
+<ul>
+<li><strong>Lifecycle:</strong> $\text{DRAFT} \to \text{PUBLISHED} \to \text{UPCOMING} \to \text{ONGOING} \to \text{COMPLETED} \to \text{CANCELLED}$.</li>
+<li><strong>Cryptographic Attendance:</strong></li>
+<li>QR bearer tokens are generated with 256 bits of CSPRNG entropy (<code>secrets.token_urlsafe(32)</code>).</li>
+<li>Only cryptographic SHA-256 hashes (<code>qr_code_hash</code>) are stored in PostgreSQL; raw bearer tokens are never persisted in plain text.</li>
+<li><strong>Certificate Reissuance (Option B):</strong></li>
+<li>Enforces active unique certificate index:</li>
+</ul>
+<pre><code class="language-sql">
+    CREATE UNIQUE INDEX uq_event_participant_active_cert ON generated_certificates(event_id, participant_id) WHERE (status = 'ISSUED');
+</code></pre>
+<ul>
+<li>Reissuing a certificate revokes the existing certificate atomically within the same database transaction.</li>
+<li>Public verification route (<code>/api/v1/certificates/verify/{certificate_number}</code>) exposes validation metadata with zero Personally Identifiable Information (PII).</li>
+</ul>
+<h3>8.4 File Management & MinIO Object Storage</h3>
+<ul>
+<li><strong>Upload Defense In-Depth:</strong></li>
+<li>Strict extension allowlist and MIME validation.</li>
+<li>Magic-byte inspection ensuring declared file headers match binary payloads.</li>
+<li>Path traversal and double-extension sanitization.</li>
+<li><strong>Unconditional SVG Rejection:</strong> <code>.svg</code> and <code>image/svg+xml</code> uploads are rejected to prevent stored Cross-Site Scripting (XSS).</li>
+<li><strong>Presigned URLs:</strong> Generated on-demand with strict expiration windows (15 minutes for private records, 60 minutes for public assets). Presigned URLs are never cached in Redis.</li>
+</ul>
+<hr />
+<h2>9. API Route Catalog & Frontend Mapping</h2>
+<div class="table-container"><table><thead><tr>
+<th>Route Prefix</th>
+<th>Domain</th>
+<th>Method</th>
+<th>Primary Endpoint</th>
+<th>Description & Auth Scope</th>
+<th>Frontend Trigger</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/api/v1/auth</code></td>
+<td>Auth</td>
+<td><code>POST</code></td>
+<td><code>/login</code></td>
+<td>Authenticate with credentials; issue dual tokens</td>
+<td><code>LoginForm</code> submit</td>
+</tr>
+<tr>
+<td><code>/api/v1/auth</code></td>
+<td>Auth</td>
+<td><code>POST</code></td>
+<td><code>/refresh</code></td>
+<td>Single-flight refresh token rotation via cookie</td>
+<td>App initialization / 15m timer</td>
+</tr>
+<tr>
+<td><code>/api/v1/auth</code></td>
+<td>Auth</td>
+<td><code>GET</code></td>
+<td><code>/me</code></td>
+<td>Retrieve profile and assigned capabilities</td>
+<td>State hydration</td>
+</tr>
+<tr>
+<td><code>/api/v1/auth</code></td>
+<td>Auth</td>
+<td><code>POST</code></td>
+<td><code>/logout</code></td>
+<td>Invalidate session in Redis & PostgreSQL</td>
+<td><code>TopHeader</code> user pill</td>
+</tr>
+<tr>
+<td><code>/api/v1/auth</code></td>
+<td>Auth</td>
+<td><code>POST</code></td>
+<td><code>/forgot-password</code></td>
+<td>Request password reset OTP</td>
+<td><code>ForgotPasswordModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/organization</code></td>
+<td>Org</td>
+<td><code>GET</code></td>
+<td><code>/hierarchy</code></td>
+<td>Fetch organizational groups and squads</td>
+<td>Dashboard sidebar & stats</td>
+</tr>
+<tr>
+<td><code>/api/v1/organization</code></td>
+<td>Org</td>
+<td><code>GET</code></td>
+<td><code>/teams/{id}/members</code></td>
+<td>Fetch members assigned to specific squad</td>
+<td><code>TeamGroupedList</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/organization</code></td>
+<td>Org</td>
+<td><code>POST</code></td>
+<td><code>/assignments</code></td>
+<td>Assign member to squad with advisory lock</td>
+<td><code>SwitchTeamModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/hr</code></td>
+<td>HR</td>
+<td><code>POST</code></td>
+<td><code>/invitations</code></td>
+<td>Dispatch single-use onboarding invite token</td>
+<td><code>AddPeopleModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/hr</code></td>
+<td>HR</td>
+<td><code>POST</code></td>
+<td><code>/members/{id}/suspend</code></td>
+<td>Suspend user and revoke Redis sessions</td>
+<td><code>RemoveMemberModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/hr</code></td>
+<td>HR</td>
+<td><code>GET</code></td>
+<td><code>/members/{id}/360</code></td>
+<td>Assemble tiered 360° member projection</td>
+<td><code>MemberProfileModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/projects</code></td>
+<td>Projects</td>
+<td><code>GET</code></td>
+<td><code>/</code></td>
+<td>List active projects with metrics</td>
+<td><code>ProjectsOverview</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/projects</code></td>
+<td>Projects</td>
+<td><code>POST</code></td>
+<td><code>/{id}/contributions</code></td>
+<td>Record contribution with 4D authorship</td>
+<td>Contribution drawer</td>
+</tr>
+<tr>
+<td><code>/api/v1/events</code></td>
+<td>Events</td>
+<td><code>GET</code></td>
+<td><code>/</code></td>
+<td>List upcoming and past chapter events</td>
+<td><code>UpcomingEventsList</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/events</code></td>
+<td>Events</td>
+<td><code>POST</code></td>
+<td><code>/</code></td>
+<td>Schedule new event with dates and venue</td>
+<td><code>CreateEventModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/events</code></td>
+<td>Events</td>
+<td><code>POST</code></td>
+<td><code>/{id}/attendance/scan</code></td>
+<td>Check in attendee via hashed QR token</td>
+<td><code>MarkAttendanceModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/events</code></td>
+<td>Events</td>
+<td><code>POST</code></td>
+<td><code>/{id}/certificates</code></td>
+<td>Batch issue certificates with unique constraint</td>
+<td><code>GenerateCertificateModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/certificates</code></td>
+<td>Public</td>
+<td><code>GET</code></td>
+<td><code>/verify/{number}</code></td>
+<td>Public cryptographic certificate verification</td>
+<td><code>ViewCertificateModal</code></td>
+</tr>
+<tr>
+<td><code>/api/v1/files</code></td>
+<td>Storage</td>
+<td><code>POST</code></td>
+<td><code>/upload</code></td>
+<td>Magic-byte verified file upload to MinIO</td>
+<td>Profile photo uploader</td>
+</tr>
+<tr>
+<td><code>/api/v1/portal</code></td>
+<td>CMS</td>
+<td><code>GET</code></td>
+<td><code>/home</code></td>
+<td>Cached public landing page aggregator</td>
+<td>Public Chapter Portal</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2>10. Cross-Cutting Patterns, Resilience & Security Controls</h2>
+<h3>10.1 Global Redis Idempotency Engine</h3>
+<p>Mutating API endpoints (<code>POST</code>, <code>PUT</code>, <code>PATCH</code>) support the client-supplied <code>Idempotency-Key</code> header:</p>
+<ul>
+<li>Evaluates the key against Redis key <code>idempotency:{scope}:{key}</code> with a 24-hour TTL.</li>
+<li>Replaying an identical request returns the cached response with <code>X-Cache-Replay: true</code>.</li>
+<li>Submitting an identical key with a conflicting payload aborts immediately with <code>HTTP 409 IDEMPOTENCY_CONFLICT</code>.</li>
+</ul>
+<h3>10.2 Transactional Audit Logging Protocol</h3>
+<p>Every database mutation follows a strict sequence:</p>
+<p>1. Verify pre-conditions and authorization boundaries.</p>
+<p>2. Execute relational mutation (<code>INSERT</code> / <code>UPDATE</code>).</p>
+<p>3. Insert <code>ActivityLog</code> entry (<code>actor_id</code>, <code>action</code>, <code>resource</code>, <code>diff_payload</code>).</p>
+<p>4. Commit database transaction.</p>
+<p>5. Evict scoped Redis authorization and session keys (<code>authz:{user_id}</code>).</p>
+<div class="alert alert-important"><strong>IMPORTANT:</strong> If a database error occurs at steps 2 or 3, the entire transaction rolls back cleanly, ensuring zero orphaned audit logs and preventing premature cache invalidations.</div>
+<hr />
+<h2>11. Infrastructure, Container Topology & Operational Runbook</h2>
+<h3>11.1 Container Orchestration Topology (<code>docker-compose.yml</code>)</h3>
+<p>The platform deploys across three isolated Docker networks:</p>
+<pre><code class="language-mermaid">
+graph LR
+    subgraph NetPublic ["Public Bridge Network (gdg_public_net)"]
+        Nginx["Nginx Reverse Proxy :4000"]
+    end
+
+    subgraph NetApp ["Internal App Network (gdg_app_net)"]
+        Backend["FastAPI Backend :8000"]
+    end
+
+    subgraph NetData ["Internal Data Network (gdg_data_net)"]
+        PG[("PostgreSQL 18 :5432")]
+        Redis[("Redis 8.10 :6379")]
+        MinIO[("MinIO S3 :9000")]
+    end
+
+    Client["Internet / User Browser"] --&gt;|Port 4000| Nginx
+    Nginx --&gt;|Proxy /api/v1/| Backend
+    Backend --&gt; PG
+    Backend --&gt; Redis
+    Backend --&gt; MinIO
+</code></pre>
+<h3>11.2 Essential Operational Commands</h3>
+<pre><code class="language-bash">
+# 1. Start complete full-stack container stack
+docker compose up -d --build
+
+# 2. Run database migrations to latest schema
+docker compose run --rm backend alembic upgrade head
+
+# 3. Execute backend test suite with coverage
+docker compose run --rm backend pytest tests/ -v --cov=app
+
+# 4. Code quality and formatting audit
+docker compose run --rm backend ruff check .
+docker compose run --rm backend ruff format --check .
+
+# 5. Dependency security audit
+docker compose run --rm backend pip-audit
+
+# 6. Verify migration reversibility
+docker compose run --rm backend alembic downgrade -1
+docker compose run --rm backend alembic upgrade head
+
+# 7. Frontend development server
+npm run dev
+
+# 8. Frontend production build
+npm run build
+</code></pre>
+<h3>11.3 Cryptographic Backup Standard (RFC 9580)</h3>
+<p>Database backups adhere to the <strong>RFC 9580</strong> specification using Sequoia PGP:</p>
+<ul>
+<li><strong>Format:</strong> PostgreSQL custom dump $\longrightarrow$ OpenPGP v6 message $\longrightarrow$ X25519 recipient encryption $\longrightarrow$ Version 2 SEIPD (Packet Type 18) with AES-256-OCB AEAD authenticated encryption $\longrightarrow$ Ed25519 digital signature.</li>
+<li><strong>Key Safety:</strong> Private decryption keys reside in an isolated offline vault and are never mounted into running containers.</li>
+</ul>
+<hr />
+<h2>12. Verification, Test Suites & Empirical Metrics</h2>
+<h3>12.1 Backend Test Coverage (292 Tests, 100% Passing)</h3>
+<pre><code class="language-">
+tests/
+├── auth/ (4 files, 25 tests)            --&gt; 100% Passed (Tokens, sessions, reset, cookies)
+├── authorization/ (4 files, 62 tests)   --&gt; 100% Passed (Precedence, scopes, bounded grants)
+├── cms/ (6 files, 18 tests)             --&gt; 100% Passed (Invalidations, portal, contact form)
+├── communications/ (1 file, 5 tests)    --&gt; 100% Passed (Dispatch, scheduling, target filtering)
+├── events/ (11 files, 35 tests)         --&gt; 100% Passed (Lifecycle, QR scan, certificates)
+├── files/ (2 files, 11 tests)           --&gt; 100% Passed (Upload defenses, SVG rejection, MinIO)
+├── hr/ (10 files, 42 tests)             --&gt; 100% Passed (State transitions, invites, 360 tiers)
+├── notifications/ (1 file, 3 tests)     --&gt; 100% Passed (Dispatch, read status)
+├── organization/ (3 files, 29 tests)    --&gt; 100% Passed (Hierarchy, advisory locks, transfers)
+├── projects/ (6 files, 29 tests)        --&gt; 100% Passed (Lifecycle, active uniqueness, 360 metrics)
+├── tasks/ (1 file, 5 tests)             --&gt; 100% Passed (Status updates, team assignment)
+├── test_invariants.py (7 tests)         --&gt; 100% Passed (Database triggers, constraints)
+├── test_phase1_schema_foundation.py     --&gt; 100% Passed (40 canonical tables, enum audits)
+└── test_smoke.py (1 test)               --&gt; 100% Passed (FastAPI app factory startup)
+</code></pre>
+<h3>12.2 Empirical Summary Metrics</h3>
+<ul>
+<li><strong>Backend Pytest Pass Rate:</strong> <strong>292 / 292 Passed (100%)</strong> across 61 test files.</li>
+<li><strong>Backend Line Coverage:</strong> <strong>~82%</strong> total line coverage across <code>backend/app/</code>.</li>
+<li><strong>Frontend Build Status:</strong> <strong>Production Build Clean (0 errors, 0 warnings)</strong> via Vite 5.</li>
+<li><strong>Live Contract Scenarios:</strong> <strong>16 / 16</strong> reverse proxy contract scenarios passed against live Docker containers on port 4000.</li>
+</ul>
+</body>
+</html>
