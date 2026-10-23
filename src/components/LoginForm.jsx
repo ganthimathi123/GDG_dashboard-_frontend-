@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Lock, Eye, EyeOff, ArrowRight, ShieldCheck, Fingerprint, Check, AlertCircle, Sparkles, Shield, Code, Calendar } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowRight, Check, AlertCircle, Sparkles, Shield, Code, Calendar } from 'lucide-react';
 import GdgLogo from './GdgLogo';
 import GoogleButton from './GoogleButton';
 
@@ -15,7 +15,6 @@ export default function LoginForm({
   googleLoading = false,
   error = ''
 }) {
-  const [authTab, setAuthTab] = useState('email'); // 'email' | 'passkey'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +22,6 @@ export default function LoginForm({
   
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [passkeyLoading, setPasskeyLoading] = useState(false);
 
   useEffect(() => {
     const savedEmail = localStorage.getItem('gdg_session_email');
@@ -80,14 +78,6 @@ export default function LoginForm({
     setPasswordError('');
   };
 
-  const handlePasskeyAuth = async () => {
-    setPasskeyLoading(true);
-    setTimeout(() => {
-      onLoginSubmit('gandhinathi@college.edu', 'PasskeySessionValid', rememberMe);
-      setPasskeyLoading(false);
-    }, 900);
-  };
-
   return (
     <div className="login-card-wrapper">
       <div className="login-card">
@@ -100,77 +90,12 @@ export default function LoginForm({
           <p className="card-subtitle">Sign in to access your GDG Dashboard</p>
         </div>
 
-        {/* Authentication Mode Tabs */}
-        <div className="auth-mode-tabs" role="tablist">
-          <button
-            type="button"
-            className={`auth-tab-btn ${authTab === 'email' ? 'active' : ''}`}
-            onClick={() => setAuthTab('email')}
-            role="tab"
-          >
-            <Mail size={15} />
-            <span>College Email ID</span>
-          </button>
-          <button
-            type="button"
-            className={`auth-tab-btn ${authTab === 'passkey' ? 'active' : ''}`}
-            onClick={() => setAuthTab('passkey')}
-            role="tab"
-          >
-            <Fingerprint size={15} />
-            <span>Passkey / TouchID</span>
-          </button>
-        </div>
-
-        {authTab === 'passkey' ? (
-          <div style={{ textAlign: 'center', padding: '1.25rem 0' }}>
-            <div style={{
-              width: '56px',
-              height: '56px',
-              borderRadius: '50%',
-              background: 'var(--google-blue-light)',
-              color: 'var(--google-blue)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '1rem'
-            }}>
-              <Fingerprint size={28} />
-            </div>
-            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '0.35rem' }}>
-              Passkey Biometric Sign In
-            </h3>
-            <p style={{ fontSize: '0.825rem', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
-              Use TouchID, FaceID, or security key to sign in securely.
-            </p>
-            <button
-              type="button"
-              className="btn-primary"
-              onClick={handlePasskeyAuth}
-              disabled={passkeyLoading}
-              style={{ width: '100%' }}
-            >
-              {passkeyLoading ? (
-                <>
-                  <div className="spinner" />
-                  <span>Authenticating...</span>
-                </>
-              ) : (
-                <>
-                  <ShieldCheck size={18} />
-                  <span>Authenticate with Passkey</span>
-                </>
-              )}
-            </button>
-          </div>
-        ) : (
-          <>
-            {/* Option 1: Continue with Google SSO */}
-            <GoogleButton 
-              onClick={onGoogleLogin} 
-              isLoading={googleLoading} 
-              disabled={loading} 
-            />
+        {/* Option 1: Continue with Google SSO */}
+        <GoogleButton 
+          onClick={onGoogleLogin} 
+          isLoading={googleLoading} 
+          disabled={loading} 
+        />
 
             {/* Option 2: Divider */}
             <div className="divider" role="separator">
@@ -321,8 +246,6 @@ export default function LoginForm({
                 )}
               </button>
             </form>
-          </>
-        )}
 
         <div className="card-footer">
           <span>Don't have an account?</span>

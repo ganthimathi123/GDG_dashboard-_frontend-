@@ -7,6 +7,7 @@ import PlaceholderDashboard from './components/PlaceholderDashboard';
 import ForgotPasswordModal from './components/ForgotPasswordModal';
 import JoinGdgModal from './components/JoinGdgModal';
 import DevIntegrationDrawer from './components/DevIntegrationDrawer';
+import ErrorBoundary from './components/ErrorBoundary';
 import { loginWithEmailPassword, loginWithGoogle } from './services/authService';
 import { AlertCircle, CheckCircle2, Info, X, Sun, Moon } from 'lucide-react';
 
@@ -127,41 +128,43 @@ export default function App() {
         </div>
       )}
 
-      {/* Role-Based Dashboard Navigation Router */}
-      {user ? (
-        user.team === 'HR' ? (
-          <HrDashboard
-            user={user}
-            onSignOut={handleSignOut}
-            showToast={showToast}
-            theme={theme}
-            toggleTheme={toggleTheme}
-          />
-        ) : user.team === 'Event Management' ? (
-          <EventDashboard
-            user={user}
-            onSignOut={handleSignOut}
-            showToast={showToast}
-            theme={theme}
-            toggleTheme={toggleTheme}
-          />
+      {/* Role-Based Dashboard Navigation Router with Error Boundary */}
+      <ErrorBoundary onReset={() => setUser(null)}>
+        {user ? (
+          user.team === 'HR' ? (
+            <HrDashboard
+              user={user}
+              onSignOut={handleSignOut}
+              showToast={showToast}
+              theme={theme}
+              toggleTheme={toggleTheme}
+            />
+          ) : user.team === 'Event Management' ? (
+            <EventDashboard
+              user={user}
+              onSignOut={handleSignOut}
+              showToast={showToast}
+              theme={theme}
+              toggleTheme={toggleTheme}
+            />
+          ) : (
+            <PlaceholderDashboard
+              user={user}
+              onSignOut={handleSignOut}
+            />
+          )
         ) : (
-          <PlaceholderDashboard
-            user={user}
-            onSignOut={handleSignOut}
+          <LoginForm
+            onLoginSubmit={handleLoginSubmit}
+            onGoogleLogin={handleGoogleLogin}
+            onForgotPasswordClick={handleOpenForgotPassword}
+            onJoinClick={() => setJoinModalOpen(true)}
+            loading={loading}
+            googleLoading={googleLoading}
+            error={formError}
           />
-        )
-      ) : (
-        <LoginForm
-          onLoginSubmit={handleLoginSubmit}
-          onGoogleLogin={handleGoogleLogin}
-          onForgotPasswordClick={handleOpenForgotPassword}
-          onJoinClick={() => setJoinModalOpen(true)}
-          loading={loading}
-          googleLoading={googleLoading}
-          error={formError}
-        />
-      )}
+        )}
+      </ErrorBoundary>
 
       {/* Interactive Modals */}
       <ForgotPasswordModal

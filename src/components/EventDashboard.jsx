@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import EventSidebar from './EventSidebar';
 import EventTopHeader from './EventTopHeader';
 import EventActionCards from './EventActionCards';
 import UpcomingEventsList from './UpcomingEventsList';
@@ -17,7 +16,6 @@ import { getEvents, getCertificates, getEventAttendanceSummary } from '../servic
  * Clean, minimal, database-backed dashboard matching reference screenshot
  */
 export default function EventDashboard({ user, onSignOut, showToast, theme, toggleTheme }) {
-  const [activeSection, setActiveSection] = useState('dashboard');
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
@@ -64,19 +62,6 @@ export default function EventDashboard({ user, onSignOut, showToast, theme, togg
 
   return (
     <div className="dashboard-root-layout">
-      {/* Dark Navy/Indigo Sidebar */}
-      <EventSidebar
-        activeSection={activeSection}
-        onSelectSection={(sec) => {
-          if (sec === 'events') setCreateEvtModalOpen(true);
-          else if (sec === 'attendance') setMarkAttModalOpen(true);
-          else if (sec === 'certificates') setGenerateCertModalOpen(true);
-          else if (sec === 'students') setStudentsModalOpen(true);
-          else setActiveSection(sec);
-          setMobileSidebarOpen(false);
-        }}
-      />
-
       {/* Main Right Area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         {/* Top Navigation Header Bar */}
@@ -92,7 +77,7 @@ export default function EventDashboard({ user, onSignOut, showToast, theme, togg
         />
 
         {/* Canvas Body */}
-        <main style={{ padding: '2rem', flex: 1, overflowY: 'auto', background: 'var(--bg-main)' }}>
+        <main className="dashboard-main-canvas">
           
           {/* Main Greeting */}
           <div style={{ marginBottom: '1.75rem' }}>
@@ -112,7 +97,7 @@ export default function EventDashboard({ user, onSignOut, showToast, theme, togg
           />
 
           {/* Middle Layout: Upcoming Events (Left) + Recent Attendance (Right) */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '1.5rem', marginBottom: '1.75rem' }}>
+          <div className="event-middle-grid">
             <UpcomingEventsList
               events={events}
               onSelectEvent={(evt) => {

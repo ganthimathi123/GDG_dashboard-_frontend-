@@ -1,5 +1,5 @@
 import React from 'react';
-import { FolderGit2, UserPlus, RefreshCw, BarChart3, ArrowRight, Users } from 'lucide-react';
+import { FolderGit2, ArrowRight, Users } from 'lucide-react';
 
 /**
  * Recent Projects Widget
@@ -75,39 +75,6 @@ export function RecentProjectsWidget() {
 }
 
 /**
- * Quick Actions Widget
- */
-export function QuickActionsWidget({ onOpenAddModal, onOpenSwitchTeam }) {
-  return (
-    <div className="widget-card">
-      <div className="widget-title-row">
-        <span>Quick Actions</span>
-      </div>
-
-      <button className="quick-action-btn" onClick={onOpenAddModal}>
-        <UserPlus size={16} style={{ color: 'var(--google-green)' }} />
-        <span>Add People</span>
-      </button>
-
-      <button className="quick-action-btn" onClick={onOpenSwitchTeam}>
-        <RefreshCw size={16} style={{ color: 'var(--google-blue)' }} />
-        <span>Switch Team</span>
-      </button>
-
-      <button className="quick-action-btn">
-        <FolderGit2 size={16} style={{ color: '#8B5CF6' }} />
-        <span>View All Projects</span>
-      </button>
-
-      <button className="quick-action-btn" onClick={() => alert('Generate Report: Member analytics export ready.')}>
-        <BarChart3 size={16} style={{ color: '#F97316' }} />
-        <span>Generate Report</span>
-      </button>
-    </div>
-  );
-}
-
-/**
  * Recent Members Widget (Aligned to the right of Team Overview)
  */
 export function RecentMembersWidget({ members, onSelectMember }) {
@@ -170,11 +137,10 @@ export function RecentMembersWidget({ members, onSelectMember }) {
 /**
  * Combined RightSidebar default export
  */
-export default function RightSidebar({ onOpenAddModal, onOpenSwitchTeam, members, onSelectMember }) {
+export default function RightSidebar({ members, onSelectMember }) {
   return (
     <div className="right-panel-column" style={{ width: '100%', maxWidth: '320px', flexShrink: 0 }}>
       <RecentProjectsWidget />
-      <QuickActionsWidget onOpenAddModal={onOpenAddModal} onOpenSwitchTeam={onOpenSwitchTeam} />
     </div>
   );
 }

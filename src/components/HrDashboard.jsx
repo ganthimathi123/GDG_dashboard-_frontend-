@@ -12,10 +12,10 @@ import SwitchTeamModal from './SwitchTeamModal';
 import { getMembers, getOrganizationStats } from '../services/dbService';
 
 /**
- * GDG HR Team Dashboard - Quick Actions in Blue Dark Sidebar & Recent Projects in Center
+ * GDG HR Team Dashboard
  */
 export default function HrDashboard({ user, onSignOut, showToast, theme, toggleTheme }) {
-  const [activeSection, setActiveSection] = useState('dashboard');
+  const [activeSection, setActiveSection] = useState('people');
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   
@@ -64,18 +64,10 @@ export default function HrDashboard({ user, onSignOut, showToast, theme, toggleT
 
   return (
     <div className="dashboard-root-layout" style={{ width: '100%' }}>
-      {/* Dark Navy Blue Left Sidebar with Quick Actions */}
+      {/* Dark Navy Blue Left Sidebar */}
       <Sidebar
-        activeSection={activeSection}
-        onSelectSection={(sec) => {
-          setActiveSection(sec);
-          setMobileSidebarOpen(false);
-        }}
-        onOpenAddModal={() => setAddModalOpen(true)}
-        onOpenSwitchTeam={() => {
-          setSelectedMember(members[0]);
-          setSwitchModalOpen(true);
-        }}
+        mobileOpen={mobileSidebarOpen}
+        onCloseMobile={() => setMobileSidebarOpen(false)}
       />
 
       {/* Main Right Area */}
@@ -93,7 +85,7 @@ export default function HrDashboard({ user, onSignOut, showToast, theme, toggleT
         />
 
         {/* Canvas Body */}
-        <main style={{ padding: '2rem', flex: 1, overflowY: 'auto' }}>
+        <main className="dashboard-main-canvas">
           
           {/* Dynamic Top Greeting */}
           <div style={{ marginBottom: '1.75rem' }}>
@@ -183,7 +175,7 @@ export default function HrDashboard({ user, onSignOut, showToast, theme, toggleT
               </div>
 
               {/* Row 3: Bottom Grid (Recent Projects & Team Overview Donut Chart) */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem' }}>
+              <div className="dashboard-bottom-grid">
                 <RecentProjectsWidget />
                 <TeamDonutChart stats={stats} />
               </div>
